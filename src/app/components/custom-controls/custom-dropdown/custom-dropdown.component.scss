@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.mat-option {
+  .search-box {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 32px;
+    height: 32px;
+    line-height: 32px;
+
+    .mat-icon {
+      margin: 0 4px;
+    }
+    input {
+      border: none;
+      background-color: transparent;
+    }
+    input:focus {
+      outline: none;
+    }
+  }
+}
+
+
+::ng-deep .mat-option {
+  .mat-option-text {
+    display: flex;
+    align-items: center;
+
+    button {
+      //width: 30px;
+      //height: 30px;
+      //font-size: 30px;
+
+      margin-left: auto;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+
+      //display: flex;
+      //align-items: center;
+
+      .mat-icon {
+        margin: auto;
+        //margin-right: 0;
+        //
+        //width: 20px;
+        //height: 20px;
+        //font-size: 20px;
+      }
+    }
+  }
+}
+

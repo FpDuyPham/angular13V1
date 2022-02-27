@@ -1,0 +1,34 @@
+
+<!--[appCustomDropdownClear]="{ enable: true }" #customDropDownClear="baseCustomDropdownClear" (clear)="customDropDownClear.clear.emit($event)"-->
+
+<mat-form-field appearance="fill"
+                appControlValueAccessor #controlValueAccessor="baseControlValueAccessor"
+                >
+  <mat-label>{{label}}</mat-label>
+  <mat-select (selectionChange)="selectionChange.emit($event)" (opened)="onOpened()" [(value)]="controlValueAccessor.controlValue">
+    <mat-select-trigger>
+      {{ controlValueAccessor.controlValue}}
+    </mat-select-trigger>
+    <div class="mat-option">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input #searchInput type="text">
+      </div>
+    </div>
+    <mat-option *ngFor="let item of dataSource | filter: searchInput.value :displayFieldName; let i = index" [value]="item[valueFieldName]">
+      {{item[displayFieldName]}}
+
+      <ng-template [ngIf]="clearDirective?.enable">
+        <ng-container *ngTemplateOutlet="clearButtonTemplate; context: {index: i}"></ng-container>
+      </ng-template>
+
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<ng-template #clearButtonTemplate let-i="index">
+  <button mat-icon-button color="warn" class="icon" (click)="clearDirective?.onDeleteClick(i)">
+    <mat-icon>close</mat-icon>
+  </button>
+</ng-template>
